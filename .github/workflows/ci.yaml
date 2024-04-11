@@ -167,6 +167,7 @@ jobs:
       - name: List directories
         run: |
           ls -alh
+          ls -alh build/
           ls -alh deploy/
           ls -alh deploy/files/
 
@@ -266,7 +267,7 @@ jobs:
         run: make -j build/image/envbox
 
       - name: tag image
-        run: docker tag envbox ghcr.io/coder/envbox:latest
+        run: docker tag envbox ghcr.io/grzegorzdubicki/envbox:latest
 
       - name: push image
-        run: docker push ghcr.io/coder/envbox:latest
+        run: docker push ghcr.io/grzegorzdubicki/envbox:latest
