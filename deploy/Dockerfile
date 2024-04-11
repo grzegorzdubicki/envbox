@@ -71,4 +71,7 @@ RUN useradd coder \
 ARG ENVBOX_BIN=envbox
 COPY $ENVBOX_BIN /
 
+# Add execute permissions to /envbox
+RUN chmod +x /envbox
+
 CMD ["/envbox"]
