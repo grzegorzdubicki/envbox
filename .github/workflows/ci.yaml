@@ -52,7 +52,7 @@ jobs:
         run: terraform init
       - name: Terraform validate
         run: terraform validate
-
+  
   build:
     runs-on: ubuntu-latest
     steps:
@@ -63,6 +63,12 @@ jobs:
       - uses: pguyot/arm-runner-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+      - name: List directories
+      run: |
+        ls -alh
+        ls -alh deploy/
+        ls -alh build/
+
       - name: Build and push image
         run: |
           docker buildx create --use
