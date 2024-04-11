@@ -69,7 +69,8 @@ RUN useradd coder \
 
 # Do this last so hotswapping is fast!
 ARG ENVBOX_BIN=envbox
-COPY $ENVBOX_BIN /
+COPY build/$ENVBOX_BIN  /
+
 
 # Add execute permissions to /envbox
 RUN chmod +x /envbox
