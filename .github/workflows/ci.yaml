@@ -67,7 +67,7 @@ jobs:
         run: |
           ls -alh
           ls -alh deploy/
-          ls -alh build/
+          ls -alh deploy/files/
       - name: Build and push image
         run: |
           docker buildx create --use
