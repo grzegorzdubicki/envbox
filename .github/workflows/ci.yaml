@@ -29,7 +29,7 @@ concurrency:
 
 jobs:
   lint:
-    runs-on: ${{ github.repository_owner == 'coder' && 'ubuntu-latest-8-cores' || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: pguyot/arm-runner-action@v2
       - name: Checkout
