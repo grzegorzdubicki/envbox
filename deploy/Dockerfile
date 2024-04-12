@@ -46,10 +46,10 @@ RUN apt-get update --quiet --option Dir::Etc::SourceParts="" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.3/sysbox-ce_0.6.3-0.linux_amd64.deb && \
-  echo "cfce811006a27305071b1634ca8fe690392f5dcc205612e7b4e5bde411b7701e sysbox-ce_0.6.3-0.linux_amd64.deb" | sha256sum --check --status && \
-  apt install -y ./sysbox-ce_0.6.3-0.linux_amd64.deb && \
-  rm ./sysbox-ce_0.6.3-0.linux_amd64.deb && \
+RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.4/sysbox-ce_0.6.4-0.linux_arm64.deb && \
+  echo "0ed41cd828cbeadbeceae41ec8c422b415bb1437443eb1fdf571f4973806a90e  sysbox-ce_0.6.4-0.linux_arm64.deb" | sha256sum --check --status && \
+  apt install -y ./sysbox-ce_0.6.4-0.linux_arm64.deb && \
+  rm ./sysbox-ce_0.6.4-0.linux_arm64.deb && \
   userdel -r sysbox
 
 # This is jank but sysbox adds their own /etc/docker/daemon.json that overwrites ours when it gets installed,
