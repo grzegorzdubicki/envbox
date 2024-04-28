@@ -1,6 +1,6 @@
 # image for dubicki/envbox:amd64-v1.0
 # Ubuntu 24.04 LTS (Focal Fossa)
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # Copy configuration files to appropriate locations
 COPY files /
