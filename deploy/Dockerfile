@@ -1,20 +1,15 @@
-# Ubuntu 20.04 LTS (Focal Fossa)
-FROM ubuntu:focal
+# image for dubicki/envbox:amd64-v1.0
+# Ubuntu 24.04 LTS (Focal Fossa)
+FROM ubuntu:24.04
 
 # Copy configuration files to appropriate locations
 COPY files /
-
-LABEL \
-  org.opencontainers.image.title="Envbox" \
-  org.opencontainers.image.url="https://github.com/coder/envbox" \
-  org.opencontainers.image.source="https://github.com/coder/envbox" \
-  org.opencontainers.image.description="Run Docker in Docker in Kubernetes"
 
 # Basic utilities
 ARG DEBIAN_FRONTEND=noninteractive
 # Pin docker to avoid any breaking API changes between the Go client and 
 # the server.
-ARG DOCKER_VERSION="5:24.0.3-1~ubuntu.20.04~focal"
+ARG DOCKER_VERSION="5:26.1.0-1~ubuntu.24.04~noble"
 #   Ignore other repositories, as some require HTTPS
 RUN apt-get update --quiet --option Dir::Etc::SourceParts="" && \
     apt-get upgrade -y && \
@@ -46,10 +41,10 @@ RUN apt-get update --quiet --option Dir::Etc::SourceParts="" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.3/sysbox-ce_0.6.3-0.linux_amd64.deb && \
-  echo "cfce811006a27305071b1634ca8fe690392f5dcc205612e7b4e5bde411b7701e sysbox-ce_0.6.3-0.linux_amd64.deb" | sha256sum --check --status && \
-  apt install -y ./sysbox-ce_0.6.3-0.linux_amd64.deb && \
-  rm ./sysbox-ce_0.6.3-0.linux_amd64.deb && \
+RUN wget https://downloads.nestybox.com/sysbox/releases/v0.6.4/sysbox-ce_0.6.4-0.linux_amd64.deb && \
+  echo "d034ddd364ee1f226b8b1ce7456ea8a12abc2eb661bdf42d3e603ed2dc741827 sysbox-ce_0.6.4-0.linux_amd64.deb" | sha256sum --check --status && \
+  apt install -y ./sysbox-ce_0.6.4-0.linux_amd64.deb && \
+  rm ./sysbox-ce_0.6.4-0.linux_amd64.deb && \
   userdel -r sysbox
 
 # This is jank but sysbox adds their own /etc/docker/daemon.json that overwrites ours when it gets installed,
